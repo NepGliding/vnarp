@@ -3,3 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* 使用全局样式（不加 scoped） */
+html,
+body,
+#app {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
