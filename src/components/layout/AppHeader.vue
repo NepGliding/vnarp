@@ -13,7 +13,7 @@
     </n-grid-item>
     <n-grid-item>
       <n-button @click="activate('left')"> 左 </n-button>
-      <n-drawer v-model:show="active" :width="325" :placement="placement">
+      <n-drawer v-model:show="active" :width="296" :placement="placement">
         <n-drawer-content title="斯通纳">
           <router-link to="/">首页</router-link>
           <router-link to="/about">关于</router-link>

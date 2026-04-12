@@ -1,6 +1,6 @@
 <template>
   <n-layout class="app-layout">
-    <n-layout-header>
+    <n-layout-header class="sticky-header">
       <AppHeader />
     </n-layout-header>
 
@@ -30,7 +30,12 @@ import AppFooter from "@/components/layout/AppFooter.vue";
 /* 让 content 区域自动填充剩余空间 */
 .n-layout-content {
   flex: 1;
-  padding: 0 24px;
-  height: 100%;
+  height: 2048px;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10; /* 确保在其他内容之上 */
 }
 </style>
