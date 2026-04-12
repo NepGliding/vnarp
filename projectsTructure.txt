@@ -31,7 +31,6 @@ project-root/
 │   │   ├── layout/                 # 布局相关组件
 │   │   │   ├── AppHeader.vue       # 顶部导航栏（含汉堡菜单）
 │   │   │   ├── AppFooter.vue       # 页脚
-│   │   │   └── AppLayout.vue      # AppLayout.vue（可选）：一个包装组件，包含 <AppHeader />、<router-view/>、<AppFooter />
 │   │   ├── common/                 # 通用组件（按钮、卡片、搜索框等）
 │   │   │   ├── SearchInput.vue
 │   │   ├── article/                 # 文章相关组件（重点）
