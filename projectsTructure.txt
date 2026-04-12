@@ -1,11 +1,11 @@
 project-root/
 ├── .github/
 │   └── workflows/
-│       └── main.yml                # 已有的 Pages 部署工作流，需扩展索引生成和 JSON 校验步骤
+│       └── main.yml                # Pages 部署工作流（索引生成和 JSON 校验步骤）
 ├── public/
 │   ├── article/                    # 存放所有 Markdown 文件，按类别分子文件夹
 │   │   ├── software/               # 软件类文章
-│   │   │   ├── tool-xxx.md
+│   │   │   ├── xxx.md
 │   │   │   └── ...
 │   │   ├── game/                   # 游戏类文章
 │   │   ├── system/                 # 操作系统类文章
@@ -17,9 +17,9 @@ project-root/
 │   │   ├── website.json
 │   │   └── system.json
 │   ├── article-index.json          # 自动生成的文章索引（不要手动编辑）
-│   └── favicon.ico                 # 站点图标（可选）
+│   └── favicon.ico                 # 站点图标
 ├── scripts/                        # 构建/维护脚本（在本地和 GitHub Actions 中运行）
-│   ├── generate-article-index.js   # 扫描 public/article/，生成 public/article-index.json
+│   ├── generate-article-index.js   # node脚本（扫描 public/article/，生成 public/article-index.json）
 │   └── validate-resources.js       # 校验 public/resource/*.json 是否符合预定义 schema
 ├── src/
 │   ├── assets/                     # 需要经过 Vite 处理的静态资源（图片、全局 CSS 等） 

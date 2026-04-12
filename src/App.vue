@@ -22,20 +22,8 @@ import AppFooter from "@/components/layout/AppFooter.vue";
 
 <style scoped>
 .app-layout {
-  height: 100vh; /* 占满视口高度 */
-  display: flex;
-  flex-direction: column;
-}
-
-/* 让 content 区域自动填充剩余空间 */
-.n-layout-content {
-  flex: 1;
-  height: 2048px;
-}
-
-.sticky-header {
-  position: sticky;
-  top: 0;
-  z-index: 10; /* 确保在其他内容之上 */
+  max-width: 1408px;
+  width: 100%;
+  margin: 0 auto;
 }
 </style>
