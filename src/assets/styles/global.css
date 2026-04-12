@@ -13,3 +13,29 @@ body,
   margin: 0;
   padding: 0;
 }
+
+/* 全局去除a标签的下划线和设置颜色 */
+a {
+  text-decoration: none;
+  color: #000;
+}
+/* 未被访问过的链接 */
+a:link {
+  text-decoration: none;
+  color: #000;
+}
+/* 已经访问过的链接 */
+a:visited {
+  text-decoration: none;
+  color: #000;
+}
+/* 鼠标悬停时的链接 */
+a:hover {
+  text-decoration: none;
+  color: #000;
+}
+/* 被点击的链接 */
+a:active {
+  text-decoration: none;
+  color: #000;
+}
