@@ -1,7 +1,7 @@
 project-root/
 ├── .github/
 │   └── workflows/
-│       └── main.yml                # Pages 部署工作流（索引生成和 JSON 校验步骤）
+│       └── main.yml                # Github Actions工作流（含部署、索引生成和 JSON 校验）
 ├── public/
 │   ├── article/                    # 存放所有 Markdown 文件，按类别分子文件夹
 │   │   ├── software/               # 软件类文章
@@ -29,7 +29,8 @@ project-root/
 │   │   └── images/                 # 组件中用到的图片（可进一步分子目录）
 │   ├── components/                 # 可复用的 Vue 组件
 │   │   ├── layout/                 # 布局相关组件
-│   │   │   ├── AppHeader.vue       # 顶部导航栏（含汉堡菜单）
+│   │   │   ├── AppHeader.vue       # 顶部信息栏（含汉堡菜单）
+│   │   │   ├── AppNav.vue          # 顶部导航卡（含汉堡菜单）
 │   │   │   ├── AppFooter.vue       # 页脚
 │   │   ├── common/                 # 通用组件（按钮、卡片、搜索框等）
 │   │   │   ├── SearchInput.vue
