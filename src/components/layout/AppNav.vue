@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <n-button @click="activate('left')"> 左 </n-button>
+    <n-button @click="activate('left')"><Menuicon /></n-button>
     <n-drawer v-model:show="active" :width="257" :placement="placement">
       <router-link to="/">首页</router-link>
       <router-link to="/article">文章</router-link>
@@ -13,6 +13,7 @@
 <script setup>
 import { ref } from "vue";
 import { NButton, NDrawer, NDrawerContent } from "naive-ui";
+import Menuicon from "@/assets/images/Menuicon.vue";
 
 const active = ref(false);
 const placement = ref("right");
