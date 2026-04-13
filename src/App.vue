@@ -1,21 +1,15 @@
 <template>
-  <n-layout class="root">
-    <n-config-provider :theme="theme">
-      <n-global-style />
-      <n-card>
-        <n-space>
-          <n-button @click="theme = darkTheme"> 深色 </n-button>
-          <n-button @click="theme = null"> 浅色 </n-button>
-        </n-space>
-      </n-card>
+  <n-config-provider :theme="theme">
+    <n-global-style />
+    <n-layout class="root">
       <n-layout-header>
-        <AppHeader />
+        <AppHeader @toggle-theme="toggleTheme" />
         <AppNav />
       </n-layout-header>
-      <n-layout-content content-style="padding: 24px;"> <router-view /> </n-layout-content>
+      <n-layout-content> <router-view /> </n-layout-content>
       <n-layout-footer><AppFooter /></n-layout-footer>
-    </n-config-provider>
-  </n-layout>
+    </n-layout>
+  </n-config-provider>
 </template>
 
 <script setup>
@@ -25,33 +19,22 @@ import AppNav from "@/components/layout/AppNav.vue";
 import AppFooter from "@/components/layout/AppFooter.vue";
 
 import {
+  darkTheme,
+  NConfigProvider,
   NGlobalStyle,
-  NButton,
   NLayout,
   NLayoutHeader,
   NLayoutContent,
   NLayoutFooter,
-  NConfigProvider,
-  darkTheme,
-  NCard,
-  NSpace,
 } from "naive-ui";
 
+// 主题：null 表示亮色主题，darkTheme 表示暗色主题
 const theme = ref(null);
 
-watch(
-  theme,
-  (newTheme) => {
-    // 使用 name 属性判断更可靠
-    const isDark = newTheme !== null && newTheme.name === "dark";
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  },
-  { immediate: true },
-);
+// 切换主题
+const toggleTheme = () => {
+  theme.value = theme.value === null ? darkTheme : null;
+};
 </script>
 
 <style>
@@ -61,3 +44,4 @@ watch(
   margin: 0 auto;
 }
 </style>
+<style scoped></style>

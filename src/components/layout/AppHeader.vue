@@ -9,13 +9,23 @@
       </template>
       <div class="large-text">啊！</div>
     </n-popover>
+    <n-switch @update:value="handleToggleTheme">
+      <template #checked>🌙</template>
+      <template #unchecked>☀️</template>
+    </n-switch>
   </div>
 </template>
 <script setup>
 import { ref } from "vue";
-import { NButton, NPopover, NIcon } from "naive-ui";
-import logoSrc from "@/assets/images/awrw36.svg";
+import { NButton, NPopover, NIcon, NSwitch } from "naive-ui";
+import logoSrc from "@/assets/images/awrw2_36.svg";
 const overlap = ref(false);
+
+const emit = defineEmits(["toggleTheme"]);
+
+const handleToggleTheme = () => {
+  emit("toggleTheme");
+};
 </script>
 
 <style scoped>
