@@ -2,7 +2,7 @@
   <div class="main">
     <div v-if="isMobile || isTablet">
       <n-button @click="activate('left')"><Menuicon /></n-button>
-      <n-drawer v-model:show="active" :width="257" :placement="placement">
+      <n-drawer v-model:show="active" :width="256" :placement="placement">
         <n-menu :options="menuOptions" :value="activeKey" />
       </n-drawer>
     </div>
@@ -13,9 +13,9 @@
 </template>
 
 <script setup>
-import { ref, h, computed } from "vue";
+import { ref, h, computed, watch, nextTick } from "vue";
 import { RouterLink, useRoute } from "vue-router";
-import { NButton, NDrawer, NMenu } from "naive-ui";
+import { NButton, NDrawer, NMenu, NH2 } from "naive-ui";
 import Menuicon from "@/assets/images/Menuicon.vue";
 import { useBreakpoints } from "@vueuse/core";
 
@@ -88,13 +88,33 @@ const menuOptions = [
   },
 ];
 
-//移动端Menu的n-button控制弹窗n-drawer
+//移动端Menu的n-button控制抽屉n-drawer
 const active = ref(false);
 const placement = ref("right");
 function activate(place) {
   active.value = true;
   placement.value = place;
 }
+
+// 移动端监听路由变化，抽屉时点击菜单自动关闭抽屉
+watch(
+  () => route.path,
+  () => {
+    if (isMobile.value || isTablet.value) {
+      active.value = false;
+    }
+  },
+);
+// 修复抽屉打开时自动聚焦第一个可互动元素（抽屉打开，移除自动聚焦的焦点）
+watch(active, (newVal) => {
+  if (newVal) {
+    nextTick(() => {
+      if (document.activeElement && document.activeElement.blur) {
+        document.activeElement.blur();
+      }
+    });
+  }
+});
 
 //使用VueUse useBreakpoints() 根据屏幕宽度在不同断点之间切换
 const breakpoints = { mobile: 0, tablet: 768, desktop: 1024 };
