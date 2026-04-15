@@ -28,7 +28,7 @@ import {
   NLayoutFooter,
 } from "naive-ui";
 
-// 主题：null 表示亮色主题，darkTheme 表示暗色主题
+// null 表示亮色主题
 const theme = ref(null);
 
 // 切换主题
