@@ -2,8 +2,8 @@
   <div class="main">
     <n-flex justify="space-between">
       <div class="search-wrapper">
-        <n-icon size="36" class="logo"> <img :src="logoSrc" alt="logo" /></n-icon>
-        <n-input v-if="isDesktop" v-model:value="seachervalue" type="text" placeholder="Input" />
+        <LeftTopSvg />
+        <n-input v-if="isDesktop" v-model:value="seacherValue" type="text" placeholder="Input" />
       </div>
 
       <div v-if="isMobile || isTablet">
@@ -17,7 +17,7 @@
             role="dialog"
             aria-modal="true"
           >
-            <n-input v-model:value="value" type="text" placeholder="Input" />
+            <n-input v-model:value="seacherValue" type="text" placeholder="Input" />
           </n-card>
         </n-modal>
 
@@ -27,27 +27,27 @@
               <Functionicon />
             </n-button>
           </template>
-          <div class="large-text">功能</div>
+          <n-menu :options="menuOptions" :value="activeKey" />
           <n-switch @update:value="handleToggleTheme"> </n-switch>
         </n-popover>
       </div>
       <div v-else>
         <n-space>
-          <n-button ghost> Default </n-button>
-          <n-button type="primary" ghost> Primary </n-button>
-          <n-button type="info" ghost> Info </n-button>
+          <n-menu mode="horizontal" :options="menuOptions" />
+          <n-switch @update:value="handleToggleTheme"> </n-switch>
         </n-space>
       </div>
     </n-flex>
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, computed, h } from "vue";
+import { useRoute, RouterLink } from "vue-router";
 import { useBreakpoints } from "@vueuse/core";
-import { NButton, NPopover, NIcon, NSwitch, NModal, NCard, NFlex, NInput, NSpace } from "naive-ui";
-import logoSrc from "@/assets/images/awrw2_36.svg";
+import { NButton, NPopover, NSwitch, NModal, NCard, NFlex, NInput, NSpace, NMenu } from "naive-ui";
 import Searchicon from "@/assets/images/Searchicon.vue";
 import Functionicon from "@/assets/images/Functionicon.vue";
+import LeftTopSvg from "@/components/common/LeftTopSvg.vue";
 
 //弹窗
 const overlap = ref(false);
@@ -68,7 +68,61 @@ const isTablet = screens.between("mobile", "desktop"); // 768-1023px
 const isDesktop = screens.greaterOrEqual("desktop"); // ≥1024px
 
 //搜索框文本输入默认值
-const seachervalue = ref(null);
+const seacherValue = ref(null);
+// 获取当前路由
+const route = useRoute();
+
+// 根据路径计算当前激活的菜单 key
+const activeKey = computed(() => {
+  const path = route.path;
+  if (path === "/article") return "go-article";
+  if (path === "/") return "go-resources";
+  if (path === "/home") return "go-home";
+  return "go-home"; // 默认首页
+});
+
+//路由菜单
+const menuOptions = [
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            path: "/article",
+          },
+        },
+        { default: () => "文章" },
+      ),
+    key: "go-article",
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            path: "/",
+          },
+        },
+        { default: () => "资源" },
+      ),
+    key: "go-resources",
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            path: "/home",
+          },
+        },
+        { default: () => "首页" },
+      ),
+    key: "go-home",
+  },
+];
 </script>
 
 <style scoped>

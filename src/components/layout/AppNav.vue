@@ -15,7 +15,7 @@
 <script setup>
 import { ref, h, computed, watch, nextTick } from "vue";
 import { RouterLink, useRoute } from "vue-router";
-import { NButton, NDrawer, NMenu, NH2 } from "naive-ui";
+import { NButton, NDrawer, NMenu } from "naive-ui";
 import Menuicon from "@/assets/images/Menuicon.vue";
 import { useBreakpoints } from "@vueuse/core";
 
@@ -28,7 +28,6 @@ const activeKey = computed(() => {
   if (path === "/") return "go-home";
   if (path === "/article") return "go-article";
   if (path === "/resources") return "go-resources";
-  if (path === "/about") return "go-about";
   return "go-home"; // 默认首页
 });
 
@@ -72,19 +71,6 @@ const menuOptions = [
         { default: () => "资源" },
       ),
     key: "go-resources",
-  },
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: {
-            path: "/about",
-          },
-        },
-        { default: () => "关于" },
-      ),
-    key: "go-about",
   },
 ];
 

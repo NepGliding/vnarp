@@ -4,22 +4,19 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     aria-hidden="true"
     role="img"
-    class="text-lg iconify iconify--lucide"
+    class="mr-2 text-lg iconify iconify--lucide"
     style=""
     width="1em"
     height="1em"
     viewBox="0 0 24 24"
   >
-    <g
+    <path
       fill="none"
       stroke="currentColor"
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="2"
-    >
-      <circle cx="12" cy="12" r="1"></circle>
-      <circle cx="19" cy="12" r="1"></circle>
-      <circle cx="5" cy="12" r="1"></circle>
-    </g>
+      d="M12 7v14m-9-3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4a4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3a3 3 0 0 0-3-3z"
+    ></path>
   </svg>
 </template>

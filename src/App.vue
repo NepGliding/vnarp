@@ -4,7 +4,7 @@
     <n-layout class="root">
       <n-layout-header>
         <AppHeader @toggle-theme="toggleTheme" />
-        <AppNav />
+        <!-- <AppNav /> -->
       </n-layout-header>
       <n-layout-content> <router-view /> </n-layout-content>
       <n-layout-footer><AppFooter /></n-layout-footer>
@@ -13,9 +13,8 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import AppHeader from "@/components/layout/AppHeader.vue";
-import AppNav from "@/components/layout/AppNav.vue";
 import AppFooter from "@/components/layout/AppFooter.vue";
 
 import {
